@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAKILA - Innovative Robotics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+    body{font-family:'Roboto',sans-serif;background:#f9f9fb;color:#222;line-height:1.6}
+
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+    body{font-family:'Roboto',sans-serif;background:#f9f9fb;color:#222;line-height:1.6}
+
+    /* Navbar */
+    nav{
+      position:fixed;top:0;left:0;width:100%;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:15px 10%;background:#fff;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      z-index:1000;
+    }
+    .logo{
+      font-family:'Orbitron',sans-serif;
+      font-size:1.8rem;color:#111;font-weight:700;letter-spacing:2px;
+    }
+    nav ul{
+      list-style:none;display:flex;gap:30px;
+    }
+    nav a{text-decoration:none;color:#111;font-weight:600;transition:all ease .3s;}
+    nav a:hover{color:#444;}
+
+    /* Hamburger */
+    .hamburger {
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      gap:5px;
+    }
+    .hamburger span {
+      width:25px;height:3px;background:#111;border-radius:2px;
+      transition:0.3s;
+    }
+
+    /* Mobile menu hidden initially */
+    nav ul {
+      transition:max-height 0.3s ease-in-out;
+    }
+
+    @media(max-width:768px){
+      nav{padding:15px 5%}
+      nav ul{
+        position:absolute;
+        top:60px;left:0;width:100%;
+        background:#fff;
+        flex-direction:column;
+        align-items:center;
+        gap:20px;
+        max-height:0;
+        overflow:hidden;
+        box-shadow:0 5px 10px rgba(0,0,0,0.1);
+      }
+      nav ul.active{
+        max-height:500px; /* enough for menu */
+        padding:20px 0;
+      }
+      .hamburger{display:flex}
+    }
+
+    /* Hero */
+    header{
+      height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;padding:0 20px;
+      background:url("bg-main-bw.jpeg") center/cover no-repeat;
+      color:#fff;position:relative;
+    }
+    header::after{
+      content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.55);
+    }
+    header .content{position:relative;z-index:1;padding:0 15px}
+    header h1{font-family:'Orbitron',sans-serif;font-size:3.5rem;margin-bottom:15px}
+    header h2{font-size:1.5rem;margin-bottom:20px}
+    header p{font-size:1.1rem;max-width:700px;margin:auto}
+
+    /* Section styling */
+    section{padding:100px 10%;text-align:center}
+    section h2{font-family:'Orbitron',sans-serif;font-size:2.2rem;margin-bottom:15px}
+    section p{max-width:850px;margin:auto;font-size:1.1rem;color:#444}
+
+    /* Image + text blocks */
+    .flex{
+      display:flex;flex-wrap:wrap;gap:50px;margin-top:50px;align-items:center;justify-content:center;
+    }
+    .flex img{
+      width:100%;
+      max-width:420px;
+      height:300px;
+      object-fit:cover;
+      border-radius:2px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.15);
+      filter:grayscale(100%);
+      transition:transform .4s;
+    }
+    .flex img:hover{transform:scale(1.05)}
+
+    /* Founder Section */
+    #founder .flex{
+      justify-content:space-between;
+      text-align:left;
+    }
+    #founder .quote-text{
+      max-width:500px;
+    }
+    #founder .quote-text p:first-child{
+      font-style:italic;font-size:1.4rem;color:#222;margin-bottom:20px;
+    }
+    #founder .quote-text p.name{
+      font-weight:bold;color:#111;font-size:1.2rem;font-family:'Orbitron',sans-serif;text-align: end;
+    }
+    #founder .quote-text p.title{color:#444;margin-top:5px;text-align: end;}
+    #founder .flex img{
+      object-position:top;
+      width:100%;
+      max-width:420px;
+      height:400px;
+    }
+
+    /* Contact */
+    #contact p{margin-top:10px;font-size:1rem}
+
+    /* Footer */
+    footer{background:#111;color:#eee;text-align:center;padding:30px 20px;margin-top:60px;font-size:.9rem}
+    
+    .whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366; /* WhatsApp green */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .whatsapp-button:hover {
+    background: #20b955;
+    transform: scale(1.05);
+  }
+
+  .wp-logo {
+    width: 22px;
+    height: 22px;
+  }
+
+    /* Cookie */
+    .cookie-banner{
+      position:fixed;bottom:0;left:0;right:0;
+      background:#fff;padding:15px 20px;border-top:1px solid #ccc;
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:.9rem;z-index:999;flex-wrap:wrap;gap:10px;
+    }
+    .cookie-banner button{
+      background:#111;color:#fff;border:none;padding:8px 16px;
+      border-radius:2px;cursor:pointer;transition:.3s;
+      border: 1px solid black;
+    }
+    .cookie-banner button:hover{background:#fff;color: #111;}
+
+    /* Responsive */
+    @media(max-width:1024px){
+      section{padding:70px 5%}
+    }
+    @media(max-width:768px){
+      nav ul{gap:15px;justify-content:center;margin-top:10px}
+      header h1{font-size:2.4rem}
+      header h2{font-size:1.2rem}
+      header p{font-size:1rem}
+      .flex{flex-direction:column;text-align:center}
+      #founder .flex{text-align:center}
+      #founder .quote-text{text-align:center}
+    }
+    @media(max-width:480px){
+      .logo{font-size:1.4rem}
+      nav ul{gap:10px;font-size:.9rem}
+      header h1{font-size:1.8rem}
+      header h2{font-size:1rem}
+      header p{font-size:.9rem}
+      section h2{font-size:1.6rem}
+      section p{font-size:.95rem}
+      .cookie-banner{flex-direction:column;text-align:center}
+    }
+
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <a href="index.html"><div class="logo">SAKILA</div></a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="nav-links">
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#founder">Founder</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header>
+    <div class="content">
+      <h1>SAKILA</h1>
+      <h2>COMING SOON</h2>
+      <p>Innovative Robotics Solutions – Redefining tomorrow with the power of intelligent humanoids.</p>
+    </div>
+  </header>
+
+  <!-- Vision -->
+  <section id="vision" class="reveal">
+    <h2>Our Vision</h2>
+    <p>At SAKILA, we envision a world where intelligent machines seamlessly integrate into everyday life. Our commitment to innovation ensures that we are at the forefront of the robotics industry, transforming ideas into reality.</p>
+    <div class="flex">
+      <img src="our-vision-img1.jpg" alt="Vision">
+      <img src="our-vision-img2.png" alt="Future Tech">
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="reveal">
+    <h2>About SAKILA</h2>
+    <p>We’re not following trends — we’re setting them. This isn’t just a beginning, it’s the spark of a revolution. Our story is about turning raw imagination into living machines, and machines into intelligent companions.</p>
+    <div class="flex">
+      <img src="about-sakila-img1.png" alt="About">
+      <img src="about-sakila-img2.jpeg" alt="Innovation">
+    </div>
+  </section>
+
+  <!-- Expertise -->
+  <section id="expertise" class="reveal">
+    <h2>Our Expertise</h2>
+    <p>Our expertise is not limited to what exists today. We are shaping the next wave of robotics — machines that learn, adapt, and evolve with us. Innovation is not just our skill, it’s our DNA.</p>
+    <div class="flex">
+      <img src="our-experties-img1.png" alt="Expertise">
+      <img src="our-experties-img2.jpeg" alt="AI Tech">
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients" class="reveal">
+    <h2>Our Clients</h2>
+    <p>We don’t chase clients — we attract visionaries. The future will see industries, creators, and pioneers align with us because we stand for disruption, for transformation, for what’s next.</p>
+    <div class="flex">
+      <img src="our-clients-img1.jpg" alt="Clients">
+      <img src="our-clients-img2.jpg" alt="Partners">
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section id="founder" class="reveal">
+    <h2>Founder</h2>
+    <div class="flex">
+      <!-- Founder Image -->
+      <img src="sakila founder.jpg" 
+           alt="Suhail Akhtar">
+
+      <!-- Quote -->
+      <div class="quote-text">
+        <p>“I am not chasing the future, I am engineering it.”</p>
+        <p class="name">— Suhail Akhtar</p>
+        <p class="title">Founder, SAKILA</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="reveal">
+    <h2>Contact Us</h2>
+    <p>Better yet, see us in person! We love our customers, so feel free to contact.</p> <br>
+    <div style="text-align:center;">
+      <a href="https://wa.me/916388805882?text=Hello%20SAKILA%20Team%2C%20I%20would%20like%20to%20know%20more%20about%20your%20robotics%20solutions." 
+        target="_blank" class="whatsapp-button">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" 
+            alt="WhatsApp" class="wp-logo">
+        Message us on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Copyright © 2025 SAKILA - All Rights Reserved.</p>
+  </footer>
+
+  <!-- Cookie -->
+  <div class="cookie-banner" id="cookieBanner">
+    <span>This website uses cookies to analyze traffic and optimize your experience.</span>
+    <button onclick="acceptCookies()">Accept</button>
+  </div>
+
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.30/dist/lenis.min.js"></script>
+  <script>
+    const hamburger=document.getElementById('hamburger');
+    const navLinks=document.getElementById('nav-links');
+
+    hamburger.addEventListener('click',()=>{
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+    function acceptCookies(){
+      document.getElementById('cookieBanner').style.display="none";
+    }
+
+
+  const lenis = new Lenis({
+    duration: 1.2,       // scroll speed
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easing curve
+    smooth: true,
+    smoothTouch: true,   // mobile smooth scroll
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+
+
+  </script>
+</body>
+</html>
