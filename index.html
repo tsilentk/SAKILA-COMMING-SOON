@@ -427,7 +427,6 @@
       <button onclick="acceptCookies()">Accept</button>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.30/dist/lenis.min.js"></script>
     <script>
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('nav-links');
@@ -451,10 +450,6 @@
         document.getElementById('cookieBanner').style.display = "none";
       }
     
-      // Smooth scroll
-      const lenis = new Lenis({duration:1.2,easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)),smooth:true,smoothTouch:true});
-      function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
-      requestAnimationFrame(raf);
     
       // Email link Gmail fallback
       document.getElementById('email-link').addEventListener('click', function (e) {
@@ -469,5 +464,6 @@
 
     </body>
     
+
 
 
