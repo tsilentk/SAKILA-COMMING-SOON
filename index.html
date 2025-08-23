@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAKILA - Innovative Robotics</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+        <!-- Primary Meta Tags -->
+        <title>Sakila Robotics and AI Solutions | Robotics, Automation & Future Tech</title>
+        <meta name="description" content="Sakila Robotics and AI Solutions delivers advanced robotics, artificial intelligence, machine learning, and automation technologies for industries and businesses worldwide.">
+        <meta name="keywords" content="Sakila Robotics, AI solutions, robotics company, artificial intelligence, automation, humanoid robots, robotics engineering, machine learning, future technology, industrial automation">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="https://www.sakila.in/">
+      
+        <!-- Favicons -->
+        <link rel="icon" type="image/png" sizes="32x32" href="SAKILA-LOGO-LIGHT.jpg">
+        <link rel="apple-touch-icon" href="SAKILA-LOGO-LIGHT.jpg">
+      
+        <!-- Open Graph / Facebook -->
+        <meta property="og:title" content="Sakila Robotics and AI Solutions">
+        <meta property="og:description" content="Explore cutting-edge robotics, AI, automation, and machine learning solutions with Sakila Robotics. Future-ready technology for businesses and industries.">
+        <meta property="og:image" content="https://www.sakila.in/images/preview.jpg">
+        <meta property="og:url" content="https://www.sakila.in/">
+        <meta property="og:type" content="website">
+      
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Sakila Robotics and AI Solutions">
+        <meta name="twitter:description" content="Sakila Robotics and AI Solutions – Your partner for robotics, AI, automation, and machine learning technology.">
+        <meta name="twitter:image" content="https://www.sakila.in/images/preview.jpg">
+      
+        <!-- Preload Fonts for Speed -->
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" as="style">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+      
+        <!-- Schema Markup for SEO -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Sakila Robotics and AI Solutions",
+          "url": "https://www.sakila.in",
+          "logo": "https://www.sakila.in/SAKILA-LOGO-LIGHT.jpg",
+          "sameAs": [
+            "https://www.facebook.com/yourpage",
+            "https://www.linkedin.com/company/yourpage",
+            "https://twitter.com/yourhandle"
+          ]
+        }
+        </script>
+
   <style>
     *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
     body{font-family:'Roboto',sans-serif;background:#f9f9fb;color:#222;line-height:1.6}
@@ -67,6 +110,44 @@
       .hamburger{display:flex}
     }
 
+/* Hamburger open animation */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(47deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-47deg) translate(5px, -5px);
+}
+
+.hamburger span {
+  transition: all 0.3s ease;
+}
+
+/* Smooth mobile menu animation */
+@media (max-width:768px) {
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transition: max-height 0.4s ease-in-out;
+  }
+  nav ul.active {
+    max-height: 500px; /* Enough for menu items */
+    padding: 20px 0;
+  }
+}
+
+
     /* Hero */
     header{
       height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
@@ -124,6 +205,7 @@
       width:100%;
       max-width:420px;
       height:400px;
+    /* transform: scaleX(-1); */
     }
 
     /* Contact */
@@ -132,28 +214,53 @@
     /* Footer */
     footer{background:#111;color:#eee;text-align:center;padding:30px 20px;margin-top:60px;font-size:.9rem}
     
-    .whatsapp-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #25D366; /* WhatsApp green */
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
+    
+    .contact-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-  .whatsapp-button:hover {
-    background: #20b955;
-    transform: scale(1.05);
-  }
+.contact-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
+}
 
-  .wp-logo {
-    width: 22px;
-    height: 22px;
-  }
+.contact-button img.icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* WhatsApp Button Style */
+.contact-button.whatsapp {
+  border: 1px solid #25d366;
+  color: #25d366;
+}
+
+.contact-button.whatsapp:hover {
+  background: #25d366;
+  color: #fff;
+}
+
+/* Email Button Style */
+.contact-button.email {
+  border: 1px solid #0072c6;
+  color: #0072c6;
+}
+
+.contact-button.email:hover {
+  background: #0072c6;
+  color: #fff;
+}
 
     /* Cookie */
     .cookie-banner{
@@ -200,149 +307,162 @@
 </head>
 <body>
 
-<!-- Navbar -->
-<nav>
-    <a href="index.html"><div class="logo">SAKILA</div></a>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul id="nav-links">
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#clients">Clients</a></li>
-      <li><a href="#founder">Founder</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<body>
 
-  <!-- Hero -->
-  <header>
-    <div class="content">
-      <h1>SAKILA</h1>
-      <h2>COMING SOON</h2>
-      <p>Innovative Robotics Solutions – Redefining tomorrow with the power of intelligent humanoids.</p>
-    </div>
-  </header>
-
-  <!-- Vision -->
-  <section id="vision" class="reveal">
-    <h2>Our Vision</h2>
-    <p>At SAKILA, we envision a world where intelligent machines seamlessly integrate into everyday life. Our commitment to innovation ensures that we are at the forefront of the robotics industry, transforming ideas into reality.</p>
-    <div class="flex">
-      <img src="our-vision-img1.jpg" alt="Vision">
-      <img src="our-vision-img2.png" alt="Future Tech">
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="reveal">
-    <h2>About SAKILA</h2>
-    <p>We’re not following trends — we’re setting them. This isn’t just a beginning, it’s the spark of a revolution. Our story is about turning raw imagination into living machines, and machines into intelligent companions.</p>
-    <div class="flex">
-      <img src="about-sakila-img1.png" alt="About">
-      <img src="about-sakila-img2.jpeg" alt="Innovation">
-    </div>
-  </section>
-
-  <!-- Expertise -->
-  <section id="expertise" class="reveal">
-    <h2>Our Expertise</h2>
-    <p>Our expertise is not limited to what exists today. We are shaping the next wave of robotics — machines that learn, adapt, and evolve with us. Innovation is not just our skill, it’s our DNA.</p>
-    <div class="flex">
-      <img src="our-experties-img1.png" alt="Expertise">
-      <img src="our-experties-img2.jpeg" alt="AI Tech">
-    </div>
-  </section>
-
-  <!-- Clients -->
-  <section id="clients" class="reveal">
-    <h2>Our Clients</h2>
-    <p>We don’t chase clients — we attract visionaries. The future will see industries, creators, and pioneers align with us because we stand for disruption, for transformation, for what’s next.</p>
-    <div class="flex">
-      <img src="our-clients-img1.jpg" alt="Clients">
-      <img src="our-clients-img2.jpg" alt="Partners">
-    </div>
-  </section>
-
-  <!-- Founder -->
-  <section id="founder" class="reveal">
-    <h2>Founder</h2>
-    <div class="flex">
-      <!-- Founder Image -->
-      <img src="sakila founder.jpg" 
-           alt="Suhail Akhtar">
-
-      <!-- Quote -->
-      <div class="quote-text">
-        <p>“I am not chasing the future, I am engineering it.”</p>
-        <p class="name">— Suhail Akhtar</p>
-        <p class="title">Founder, SAKILA</p>
+    <!-- Navbar -->
+    <nav>
+        <a href="index.html"><div class="logo">SAKILA</div></a>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="nav-links">
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#founder">Founder</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero -->
+    <header>
+      <div class="content">
+        <h1>SAKILA Robotics & AI Solutions</h1>
+        <h2>Engineering the Future of Intelligent Automation</h2>
+        <p>We create advanced Robotics and Artificial Intelligence solutions that power automation, intelligent systems, and next-generation humanoid technologies.</p>
       </div>
+    </header>
+    
+    <!-- Vision -->
+    <section id="vision" class="reveal">
+      <h2>Our Vision</h2>
+      <p>At SAKILA, our vision is to lead the world into a new era of robotics and AI innovation. We believe in creating machines that learn, adapt, and evolve — seamlessly integrating into industries and daily life to unlock unlimited possibilities.</p>
+      <div class="flex">
+        <img src="our-vision-img1.jpg" alt="Vision">
+        <img src="our-vision-img2.png" alt="Future Tech">
+      </div>
+    </section>
+    
+    <!-- About -->
+    <section id="about" class="reveal">
+      <h2>About SAKILA</h2>
+      <p>Sakila Robotics is more than a company — it’s a revolution. We combine robotics engineering, AI, and machine learning to create solutions that redefine innovation. Our mission is to deliver future-ready automation systems for industries, businesses, and humanity.</p>
+      <div class="flex">
+        <img src="about-sakila-img1.png" alt="About">
+        <img src="about-sakila-img2.jpeg" alt="Innovation">
+      </div>
+    </section>
+    
+    <!-- Expertise -->
+    <section id="expertise" class="reveal">
+      <h2>Our Expertise</h2>
+      <p>Our expertise spans across robotics engineering, AI-powered automation, and smart machine development. From industrial automation to intelligent humanoids, we design solutions that learn, adapt, and perform with precision. Future technologies are not just concepts for us — they are realities in motion.</p>
+      <div class="flex">
+        <img src="our-experties-img1.png" alt="Expertise">
+        <img src="our-experties-img2.jpeg" alt="AI Tech">
+      </div>
+    </section>
+    
+    <!-- Clients -->
+    <section id="clients" class="reveal">
+      <h2>Our Clients</h2>
+      <p>We partner with businesses and innovators who share our vision for the future. From manufacturing and logistics to healthcare and research, our clients are leaders committed to leveraging robotics and AI for transformative growth.</p>
+      <div class="flex">
+        <img src="our-clients-img1.jpg" alt="Clients">
+        <img src="our-clients-img2.jpg" alt="Partners">
+      </div>
+    </section>
+    
+    <!-- Founder -->
+    <section id="founder" class="reveal">
+      <h2>Founder</h2>
+      <div class="flex">
+        <img src="SAKILA-FOUNDER.jpg" alt="Suhail Akhtar">
+        <div class="quote-text">
+          <p>“We don’t predict the future, we create it — with Robotics and Artificial Intelligence.”</p>
+          <p class="name">— Suhail Akhtar</p>
+          <p class="title">Founder, SAKILA</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact -->
+    <section id="contact" class="reveal">
+      <h2>Contact Us</h2>
+      <p>Let’s build the future together. Connect with us to explore Robotics, AI, and automation solutions tailored for your needs.</p>
+      <br>
+      <!-- Contact Buttons Container -->
+      <div class="contact-buttons">
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/916388805882?text=Hello%20SAKILA%20Team%2C%20I%20would%20like%20to%20know%20more%20about%20your%20robotics%20and%20AI%20solutions." 
+           target="_blank" class="contact-button whatsapp">
+          <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" class="icon">
+          Message us on WhatsApp
+        </a>
+      
+        <!-- Email Button -->
+        <a href="mailto:info@sakila.in?subject=Inquiry%20About%20Robotics%20and%20AI%20Solutions&body=Hello%20SAKILA%20Team%2C%0AI%20would%20like%20to%20know%20more%20about%20your%20robotics%20and%20AI%20solutions." 
+        class="contact-button email" id="email-link">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="icon">
+        Email us at info@sakila.in
+        </a>
+      </div>
+      
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+      <p>Copyright © 2025 SAKILA Robotics & AI Solutions - All Rights Reserved.</p>
+    </footer>
+    
+    <!-- Cookie -->
+    <div class="cookie-banner" id="cookieBanner">
+      <span>This website uses cookies to analyze traffic and optimize your experience.</span>
+      <button onclick="acceptCookies()">Accept</button>
     </div>
-  </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.30/dist/lenis.min.js"></script>
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+    
+      // Toggle mobile menu
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('open');
+      });
+    
+      // Close menu on link click
+      document.querySelectorAll('#nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('open');
+        });
+      });
+    
+      // Cookie banner
+      function acceptCookies() {
+        document.getElementById('cookieBanner').style.display = "none";
+      }
+    
+      // Smooth scroll
+      const lenis = new Lenis({duration:1.2,easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)),smooth:true,smoothTouch:true});
+      function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
+      requestAnimationFrame(raf);
+    
+      // Email link Gmail fallback
+      document.getElementById('email-link').addEventListener('click', function (e) {
+        e.preventDefault();
+        const mailtoLink = this.getAttribute('href');
+        const gmailLink = 'https://mail.google.com/mail/?view=cm&fs=1&to=info@sakila.in&su=Inquiry%20About%20Robotics%20and%20AI%20Solutions&body=Hello%20SAKILA%20Team,%0AI%20would%20like%20to%20know%20more%20about%20your%20robotics%20and%20AI%20solutions.';
+        window.open(gmailLink, '_blank');
+        setTimeout(()=>{window.location.href = mailtoLink;},1000);
+      });
+    </script>
+    
 
-  <!-- Contact -->
-  <section id="contact" class="reveal">
-    <h2>Contact Us</h2>
-    <p>Better yet, see us in person! We love our customers, so feel free to contact.</p> <br>
-    <div style="text-align:center;">
-      <a href="https://wa.me/916388805882?text=Hello%20SAKILA%20Team%2C%20I%20would%20like%20to%20know%20more%20about%20your%20robotics%20solutions." 
-        target="_blank" class="whatsapp-button">
-        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" 
-            alt="WhatsApp" class="wp-logo">
-        Message us on WhatsApp
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>Copyright © 2025 SAKILA - All Rights Reserved.</p>
-  </footer>
-
-  <!-- Cookie -->
-  <div class="cookie-banner" id="cookieBanner">
-    <span>This website uses cookies to analyze traffic and optimize your experience.</span>
-    <button onclick="acceptCookies()">Accept</button>
-  </div>
-
-
-  
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.30/dist/lenis.min.js"></script>
-  <script>
-    const hamburger=document.getElementById('hamburger');
-    const navLinks=document.getElementById('nav-links');
-
-    hamburger.addEventListener('click',()=>{
-      navLinks.classList.toggle('active');
-      hamburger.classList.toggle('open');
-    });
-    function acceptCookies(){
-      document.getElementById('cookieBanner').style.display="none";
-    }
-
-
-  const lenis = new Lenis({
-    duration: 1.2,       // scroll speed
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easing curve
-    smooth: true,
-    smoothTouch: true,   // mobile smooth scroll
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-
-
-
-  </script>
-</body>
-</html>
+    </body>
+    
