@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate Verification | SAKILA</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{font-family:'Roboto',sans-serif;background:#f9f9fb;color:#222;margin:0;padding:0;}
+h1,h2,h3{font-family:'Orbitron',sans-serif;}
+nav{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 10%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:1000;}
+.logo{font-family:'Orbitron',sans-serif;font-size:1.8rem;color:#111;font-weight:700;letter-spacing:2px;}
+nav ul{list-style:none;display:flex;gap:30px;}
+nav a{text-decoration:none;color:#111;font-weight:600;transition:all ease .3s;}
+nav a:hover{color:#444;}
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+.hamburger span{width:25px;height:3px;background:#111;border-radius:2px;transition:0.3s;}
+.hamburger.open span:nth-child(1){transform:rotate(47deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-47deg) translate(5px,-5px);}
+@media(max-width:768px){
+  nav{padding:15px 5%}
+  nav ul{position:absolute;top:60px;left:0;width:100%;background:#fff;flex-direction:column;align-items:center;gap:20px;max-height:0;overflow:hidden;box-shadow:0 5px 10px rgba(0,0,0,0.1);transition:max-height 0.4s ease-in-out;}
+  nav ul.active{max-height:500px;padding:20px 0;}
+  .hamburger{display:flex}
+}
+
+/* Certificate Header */
+header{padding:120px 10px 50px;text-align:center;}
+header h1{font-size:2.8rem;margin-bottom:10px;color:#111;}
+header h2{font-size:1.4rem;margin-bottom:25px;color:#444;}
+
+/* Certificate Card */
+.certificate-card{
+  max-width:600px;
+  margin:auto;
+  background:#fff;
+  border-radius:12px;
+  padding:30px 40px;
+  position:relative;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  text-align:left;
+}
+.certificate-card .verified-badge{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background-color:#00c853;
+  color:#fff;
+  font-weight:600;
+  padding:5px 10px;
+  border-radius:4px;
+  text-transform:uppercase;
+  font-size:0.75rem;
+}
+.certificate-card .field{
+  margin-top:15px;
+}
+.certificate-card .label{
+  font-weight:500;
+  color:#555;
+  font-size:0.85rem;
+  text-transform:uppercase;
+}
+.certificate-card .value{
+  font-weight:500;
+  color:#111;
+  font-size:1rem;
+}
+
+/* Contact Section */
+section#contact{padding:80px 10% 50px;text-align:center;}
+.contact-buttons{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+.contact-button{display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:16px;transition:0.3s;}
+.contact-button img.icon{width:20px;height:20px;}
+.contact-button.whatsapp{border:1px solid #25d366;color:#25d366;}
+.contact-button.whatsapp:hover{background:#25d366;color:#fff;}
+.contact-button.email{border:1px solid #0072c6;color:#0072c6;}
+.contact-button.email:hover{background:#0072c6;color:#fff;}
+
+/* Footer */
+footer{background:#111;color:#eee;text-align:center;padding:30px 20px;margin-top:60px;font-size:.9rem;}
+
+/* Responsive */
+@media(max-width:768px){
+  .certificate-card{padding:20px; margin:20px;}
+  header h1{font-size:2rem;}
+  header h2{font-size:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <a href="index.html"><div class="logo">SAKILA</div></a>
+    <ul id="nav-links">
+    </ul>
+</nav>
+
+<!-- Certificate Header -->
+<header>
+  <h1>Certificate Verification</h1>
+  <h2>Check your verified certificate details below</h2>
+  <div id="certificate" class="certificate-card">
+    <p>Loading certificate information...</p>
+  </div>
+</header>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Let’s build the future together. Connect with us to explore Robotics, AI, and automation solutions tailored for your needs.</p>
+  <div class="contact-buttons">
+    <a href="https://wa.me/916388805882?text=Hello%20SAKILA%20Team" target="_blank" class="contact-button whatsapp">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" class="icon">
+      Message us on WhatsApp
+    </a>
+    <a href="mailto:info@sakila.in" class="contact-button email" id="email-link">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="icon">
+      Email us at info@sakila.in
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2025 SAKILA Robotics & AI Solutions - All Rights Reserved.</p>
+</footer>
+
+<script>
+// Hamburger menu
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('nav-links');
+hamburger.addEventListener('click',()=>{navLinks.classList.toggle('active');hamburger.classList.toggle('open');});
+document.querySelectorAll('#nav-links a').forEach(link=>{link.addEventListener('click',()=>{navLinks.classList.remove('active');hamburger.classList.remove('open');});});
+
+// Certificate data
+function getQueryParam(name){return new URLSearchParams(window.location.search).get(name);}
+const certId=getQueryParam('id');
+const certDiv=document.getElementById('certificate');
+
+if(!certId){
+    certDiv.innerHTML='<p class="text-red-500 font-semibold">No certificate ID provided.</p>';
+}else{
+    fetch('certificates_with_ids.json')
+    .then(res=>res.ok?res.json():Promise.reject('Cannot load certificate data'))
+    .then(data=>{
+        const cert=data.find(c=>c.id.toUpperCase()===certId.toUpperCase());
+        if(cert){
+            certDiv.innerHTML=`
+                <span class="verified-badge">Verified</span>
+                <div class="field"><p class="label">Name</p><p class="value">${cert.name}</p></div>
+                <div class="field"><p class="label">Role</p><p class="value">${cert.role}</p></div>
+                <div class="field"><p class="label">Certificate ID</p><p class="value">${cert.id}</p></div>
+                <div class="field"><p class="label">Issued On</p><p class="value">${cert.issued_on}</p></div>
+                <div class="field"><p class="label">Start Date</p><p class="value">${cert.start_date}</p></div>
+                <div class="field"><p class="label">End Date</p><p class="value">${cert.end_date}</p></div>
+            `;
+        }else{
+            certDiv.innerHTML='<p class="text-red-500 font-semibold">Invalid certificate ID.</p>';
+        }
+    })
+    .catch(err=>{certDiv.innerHTML=`<p class="text-red-500 font-semibold">Error: ${err}</p>`;});
+}
+</script>
+</body>
+</html>
