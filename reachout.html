@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Application Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(220, 220, 220, 1), transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(230, 230, 230, 1), transparent 50%);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05),
+                inset 0 0 20px rgba(0, 0, 0, 0.01);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1),
+                inset 0 0 25px rgba(0, 0, 0, 0.02);
+    border-color: #d0d0d0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h2 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: #111111;
+}
+
+.line {
+    height: 2px;
+    width: 60px;
+    background: #cccccc;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.question-box {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.question {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.blank {
+    color: #999999;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    background: #ffffff;
+    color: #444444;
+    border: 1px solid #cccccc;
+    padding: 16px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #000000;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.option-btn:hover:not([disabled]) {
+    background: #fcfcfc;
+    border-color: #888888;
+    color: #000000;
+    transform: translateX(5px);
+}
+
+.option-btn:hover:not([disabled])::before {
+    opacity: 1;
+}
+
+.option-btn:active:not([disabled]) {
+    transform: translateX(2px);
+}
+
+/* Correct/Wrong states */
+.option-btn.correct {
+    background: #f0f0f0;
+    border-color: #111111;
+    color: #111111;
+    font-weight: 700;
+}
+
+.option-btn.correct::before {
+    background: #111111;
+    opacity: 1;
+}
+
+.option-btn.wrong {
+    background: #fafafa;
+    border-color: #ffcccc;
+    color: #cc0000;
+}
+
+.option-btn.wrong::before {
+    background: #cc0000;
+    opacity: 1;
+}
+
+.feedback-box {
+    text-align: center;
+    margin-bottom: 30px;
+    min-height: 24px;
+}
+
+#status-msg {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #666666;
+    transition: color 0.3s ease;
+    font-weight: 700;
+}
+
+.action-box {
+    text-align: center;
+}
+
+.contact-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.contact-btn.disabled {
+    background: #eeeeee;
+    color: #aaaaaa;
+    cursor: not-allowed;
+    border: 1px dashed #cccccc;
+}
+
+.contact-btn.enabled {
+    background: #111111;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn.enabled:hover {
+    background: #333333;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.contact-btn.enabled:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+    }
+    
+    .question {
+        font-size: 1rem;
+    }
+    
+    .option-btn {
+        font-size: 0.85rem;
+        padding: 14px 16px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h2>QUICK QUESTION</h2>
+                <div class="line"></div>
+            </div>
+            
+            <div class="question-box">
+                <p class="question">Programmable matter is the future application of <span class="blank">..........................</span></p>
+            </div>
+
+            <div class="options-container" id="options-container">
+                <button class="option-btn" onclick="checkAnswer(this, false)">ARTIFICIAL INTELLIGENCE</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">MATERIAL SCIENCE</button>
+                <button class="option-btn" onclick="checkAnswer(this, true)">PHYSICAL INTELLIGENCE</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">MODULAR ROBOTICS</button>
+            </div>
+
+            <div class="feedback-box">
+                <p id="status-msg">Choose the correct underlying field to proceed...</p>
+            </div>
+
+            <div class="action-box">
+                <!-- Using a disabled button that acts like a link when enabled -->
+                <button id="contact-btn" class="contact-btn disabled" disabled onclick="redirectToWhatsApp()">
+                    REACH OUT NOW
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(btn, isCorrect) {
+            const allOptions = document.querySelectorAll('.option-btn');
+            const contactBtn = document.getElementById('contact-btn');
+            const statusMsg = document.getElementById('status-msg');
+
+            // Disable all options after selection
+            allOptions.forEach(opt => {
+                opt.disabled = true;
+                opt.style.cursor = 'not-allowed';
+            });
+            
+            if (isCorrect) {
+                btn.classList.add('correct');
+                statusMsg.innerText = "Correct! You may now reach out.";
+                statusMsg.style.color = "#10b981"; // Success green text
+                
+                // Enable contact button
+                contactBtn.disabled = false;
+                contactBtn.classList.remove('disabled');
+                contactBtn.classList.add('enabled');
+            } else {
+                btn.classList.add('wrong');
+                statusMsg.innerText = "Incorrect answer. Please reload and try again.";
+                statusMsg.style.color = "#dc2626"; // Error red text
+            }
+        }
+
+        function redirectToWhatsApp() {
+            // Encode the requested text message
+            const message = "Hi Suhail Akhtar, I am highly interested in joining your research journey into Programmable Matter. Please let me know the next steps to get involved!";
+            const encodedMessage = encodeURIComponent(message);
+            // WhatsApp link with India country code (91) assumed for the 10-digit number
+            const waLink = `https://wa.me/916388805882?text=${encodedMessage}`;
+            window.location.href = waLink;
+        }
+    </script>
+</body>
+</html>
